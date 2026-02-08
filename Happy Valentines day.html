@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Question</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff5f9e, #ffc371);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .box {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    #yes {
+        background: #28a745;
+        color: white;
+    }
+
+    #no {
+        background: #dc3545;
+        color: white;
+        position: absolute;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popup-content {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        animation: pop 0.5s ease;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0.5); }
+        100% { transform: scale(1); }
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h1>WILL YOU BE MY VALENTINE</h1>
+    <button id="yes">YES</button>
+    <button id="no">NO</button>
+</div>
+
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <h2>🎉 CONGRATULATIONS 🎉</h2>
+        <p><strong>YOU HAVE NO RETURN FROM THIS 😈😈</strong></p>
+        <p>💣🎊💥</p>
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const popup = document.getElementById("popup");
+
+    const messages = [
+        "Please don't do this",
+        "No baby",
+        "Baby just about that",
+        "Why"
+    ];
+
+    noBtn.addEventListener("mouseover", moveNo);
+    noBtn.addEventListener("click", moveNo);
+
+    function moveNo() {
+        const x = Math.random() * (window.innerWidth - 150);
+        const y = Math.random() * (window.innerHeight - 80);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+        noBtn.innerText = messages[Math.floor(Math.random() * messages.length)];
+    }
+
+    yesBtn.addEventListener("click", () => {
+        popup.style.display = "flex";
+    });
+</script>
+
+</body>
+</html>
